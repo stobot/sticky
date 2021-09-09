@@ -141,6 +141,8 @@ Error message and password prompt
 
 <p>This <a class="tc-tiddlylink-external" href="https://tiddlywiki.com" rel="noopener noreferrer" target="_blank">TiddlyWiki</a> contains the following tiddlers:</p><p><ul>
 
+<li>$:/config/Navigation/openLinkFromOutsideRiver</li>
+
 <li>$:/config/NewJournal/Title</li>
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home</li>
@@ -148,6 +150,10 @@ Error message and password prompt
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/more-page-actions</li>
 
 <li>$:/config/RelinkOnRename</li>
+
+<li>$:/config/Tiddlers/TitleLinks</li>
+
+<li>$:/config/WikiParserRules/Inline/wikilink</li>
 
 <li>$:/core</li>
 
@@ -229,6 +235,9 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
+<div created="20210909161807220" modified="20210909161807220" title="$:/config/Navigation/openLinkFromOutsideRiver">
+<pre>bottom</pre>
+</div>
 <div created="20210909161018951" modified="20210909161023243" title="$:/config/NewJournal/Title">
 <pre>YYYY-0MM-0DD</pre>
 </div>
@@ -240,6 +249,12 @@ Error message and password prompt
 </div>
 <div created="20210909161522041" modified="20210909161522041" title="$:/config/RelinkOnRename">
 <pre>yes</pre>
+</div>
+<div created="20210909161824299" modified="20210909161824299" title="$:/config/Tiddlers/TitleLinks">
+<pre>yes</pre>
+</div>
+<div created="20210909161757514" modified="20210909161757514" title="$:/config/WikiParserRules/Inline/wikilink">
+<pre>disable</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.23">
 <pre>{
@@ -10472,8 +10487,8 @@ Error message and password prompt
 <div created="20210909161025345" modified="20210909161135005" title="$:/state/tab--2112689675">
 <pre>$:/core/ui/ControlPanel/Basics</pre>
 </div>
-<div created="20210909160400918" modified="20210909161528956" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Info</pre>
+<div created="20210909160400918" modified="20210909161749926" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
 <div created="20210909160402508" modified="20210909160402508" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
@@ -10487,7 +10502,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210909161447940" list="[[Meeting about ProjectA 2021-09-09]] [[Sticky Todo]]" modified="20210909161724897" title="$:/StoryList">
+<div created="20210909161447940" list="[[Sticky Todo]] [[Meeting about ProjectA 2021-09-09]] [[Meeting about ProjectB 2021-09-09]] [[Journal for 2021-09-09]]" modified="20210909161840028" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10681,8 +10696,10 @@ Error message and password prompt
 ** Joshua was really impressive, I should &lt;&lt;sticky &quot;setup a lunch meeting with Joshua&quot;&gt;&gt; and start collaborating with him
 </pre>
 </div>
-<div created="20210905212951984" modified="20210905212959429" title="Sticky Todo">
-<pre>!!! Welcome to Sticky Todo</pre>
+<div created="20210905212951984" modified="20210909161938234" title="Sticky Todo">
+<pre>!!! Welcome to Sticky Todo
+
+You can install this plugin by drag-n-drop of this link ([[$:/plugins/stobot/sticky]]) to your wiki</pre>
 </div>
 <div created="20210907231819010" modified="20210909134531397" tags="" title="Sticky Todo Table Example">
 <pre>&lt;&lt;sticky-table&gt;&gt;</pre>
