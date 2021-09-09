@@ -10476,7 +10476,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div caption="Macros" created="20210904163541416" modified="20210909183518961" tags="$:/tags/Macro" title="$:/plugins/stobot/sticky/macros" type="text/vnd.tiddlywiki">
+<div caption="Macros" created="20210904163541416" modified="20210909183553490" tags="$:/tags/Macro" title="$:/plugins/stobot/sticky/macros" type="text/vnd.tiddlywiki">
 <pre>\define sticky-string() \&lt;\&lt;sticky\s&quot;.+?&quot;\&gt;\&gt;
 
 \define escape-actions() &lt;$action-deletetiddler $tiddler=&quot;$:/temp/sticky-search&quot; /&gt;
@@ -10560,7 +10560,7 @@ Error message and password prompt
 &lt;$wikify name=&quot;timestamp&quot; text={{$:/plugins/stobot/sticky/settings##done-tooltip}}&gt;
 &lt;$button class=&quot;tc-btn-invisible&quot; &gt;
   &lt;span class=&quot;sticky-active&quot;&gt;{{$:/plugins/stobot/sticky/settings##char-unchecked}}&amp;nbsp;$txt$
-    &lt;$list filter=&quot;[&lt;currentTiddler&gt;get[text]splitregexp[\n]regexp[$txt$]count[]compare:integer:gt[1]]&quot; variable=&quot;match-count&quot;&gt;[&lt;&lt;match-count&gt;&gt;]
+    &lt;$list filter=&quot;[&lt;currentTiddler&gt;get[text]splitregexp[\n]regexp[$txt$]count[]compare:integer:gt[1]]&quot; variable=&quot;match-count&quot;&gt;[&lt;&lt;match-count&gt;&gt;]&lt;/$list&gt;
   &lt;/span&gt;
   &lt;$vars out_base=&quot;&quot;&quot;&lt;&lt;sticky-done &quot;$txt$&quot; &quot; &quot;&quot;&quot; out_time=&lt;&lt;timestamp&gt;&gt; out_end=&quot;&quot;&quot; &quot;&gt;&gt;&quot;&quot;&quot;  &gt;
     &lt;$vars in=&quot;&quot;&quot;&lt;&lt;sticky &quot;$txt$&quot;&gt;&gt;&quot;&quot;&quot; out={{{ [&lt;out_base&gt;addsuffix&lt;out_time&gt;addsuffix&lt;out_end&gt;] }}}&gt;
@@ -10617,8 +10617,8 @@ Note that I'm not an TiddlyWiki expert or software developer and offer no warran
 <div created="20210909160402508" modified="20210909160402508" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
-<div created="20210909161649202" modified="20210909180918692" title="$:/state/tab/sidebar--595412856">
-<pre>$:/plugins/ahahn/tinka/temp/stobot/sticky - Help Tab</pre>
+<div created="20210909161649202" modified="20210909183528820" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20210909161042501" modified="20210909161042501" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/PageControls</pre>
