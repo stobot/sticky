@@ -10476,7 +10476,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div caption="Macros" created="20210904163541416" modified="20210909183553490" tags="$:/tags/Macro" title="$:/plugins/stobot/sticky/macros" type="text/vnd.tiddlywiki">
+<div caption="Macros" created="20210904163541416" modified="20210909204533878" tags="$:/tags/Macro" title="$:/plugins/stobot/sticky/macros" type="text/vnd.tiddlywiki">
 <pre>\define sticky-string() \&lt;\&lt;sticky\s&quot;.+?&quot;\&gt;\&gt;
 
 \define escape-actions() &lt;$action-deletetiddler $tiddler=&quot;$:/temp/sticky-search&quot; /&gt;
@@ -10503,9 +10503,6 @@ Error message and password prompt
           &lt;td&gt;''&lt;$link/&gt;''&lt;/td&gt;
           &lt;td&gt;
             &lt;$list filter=&quot;[&lt;line&gt;search-replace::regexp{$:/plugins/stobot/sticky/settings##table-search},[$1]]&quot; variable=&quot;line-clean&quot;&gt;&lt;&lt;line-clean&gt;&gt;&lt;/$list&gt;
-            &lt;$list filter=&quot;[&lt;line&gt;search-replace::regexp{$:/plugins/stobot/sticky/settings##todo-search},[$1]]&quot; variable=&quot;macro-string&quot;&gt;
-              &lt;$list filter=&quot;[all[current]get[text]splitregexp[\n]regexp&lt;macro-string&gt;count[]compare:integer:gt[1]]&quot; variable=&quot;match-count&quot;&gt;&lt;span class=&quot;sticky-active&quot;&gt;[&lt;&lt;match-count&gt;&gt;]&lt;/span&gt;&lt;/$list&gt;
-            &lt;/$list&gt;
           &lt;/td&gt;
         &lt;/tr&gt;
       &lt;/$list&gt;
@@ -10523,9 +10520,6 @@ Error message and password prompt
   &lt;hr&gt;
   &lt;$list filter=&quot;[all[current]get[text]splitregexp[\n]regexp&lt;sticky-string&gt;]&quot; variable=&quot;line&quot;&gt;
     &lt;div style=&quot;margin-left: 1em;text-indent: -1em;&quot;&gt;&lt;$list filter=&quot;[&lt;line&gt;search-replace::regexp{$:/plugins/stobot/sticky/settings##list-search},[$1]]&quot; variable=&quot;line-clean&quot;&gt;&lt;&lt;line-clean&gt;&gt;&lt;/$list&gt;
-      &lt;$list filter=&quot;[&lt;line&gt;search-replace::regexp{$:/plugins/stobot/sticky/settings##todo-search},[$1]]&quot; variable=&quot;macro-string&quot;&gt;
-        &lt;$list filter=&quot;[all[current]get[text]splitregexp[\n]regexp&lt;macro-string&gt;count[]compare:integer:gt[1]]&quot; variable=&quot;match-count&quot;&gt;&lt;span class=&quot;sticky-active&quot;&gt;[&lt;&lt;match-count&gt;&gt;]&lt;/span&gt;&lt;/$list&gt;
-      &lt;/$list&gt;
     &lt;/div&gt;
   &lt;/$list&gt;
 &lt;/$list&gt;
@@ -10545,8 +10539,6 @@ Error message and password prompt
     &lt;$link/&gt;&lt;br&gt;
     &lt;$list filter=&quot;[all[current]get[text]splitregexp[\n]regexp&lt;sticky-string&gt;]&quot; variable=&quot;line&quot;&gt;
       &lt;div style=&quot;margin-left:2em;text-indent:-1em;&quot;&gt;&lt;$list filter=&quot;[&lt;line&gt;search-replace::regexp{$:/plugins/stobot/sticky/settings##sidebar-search},[$1]]&quot; variable=&quot;line-clean&quot;&gt;&lt;&lt;line-clean&gt;&gt;&lt;/$list&gt;
-        &lt;$list filter=&quot;[&lt;line&gt;search-replace::regexp{$:/plugins/stobot/sticky/settings##todo-search},[$1]]&quot; variable=&quot;macro-string&quot;&gt;
-          &lt;$list filter=&quot;[all[current]get[text]splitregexp[\n]regexp&lt;macro-string&gt;count[]compare:integer:gt[1]]&quot; variable=&quot;match-count&quot;&gt;&lt;span class=&quot;sticky-active&quot;&gt;[&lt;&lt;match-count&gt;&gt;]&lt;/span&gt;&lt;/$list&gt;
         &lt;/$list&gt;
       &lt;/div&gt;
     &lt;/$list&gt;
