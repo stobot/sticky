@@ -177,6 +177,8 @@ Error message and password prompt
 
 <li>$:/plugins/stobot/sticky</li>
 
+<li>$:/plugins/stobot/sticky/macros</li>
+
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
@@ -10372,7 +10374,7 @@ Error message and password prompt
 &lt;/$set&gt;
 &lt;/$set&gt;</pre>
 </div>
-<div author="stobot" core-version="&gt;=5.1.23" created="20210905214035776" description="Lightweight todo tool" list="readme config" modified="20210908182909847" name="Sticky Todo" plugin-type="plugin" source="" title="$:/plugins/stobot/sticky" type="application/json" version="0.1.29">
+<div author="stobot" core-version="&gt;=5.1.23" created="20210905214035776" description="Lightweight todo tool" list="readme config" modified="20210908182909847" name="Sticky Todo" plugin-type="plugin" source="" title="$:/plugins/stobot/sticky" type="application/json" version="0.1.28">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;$:/config/ShortcutInfo/sticky&quot;: {
@@ -10411,12 +10413,12 @@ Error message and password prompt
             &quot;bag&quot;: &quot;default&quot;
         },
         &quot;$:/plugins/stobot/sticky/macros&quot;: {
-            &quot;created&quot;: &quot;20210904163541416&quot;,
-            &quot;text&quot;: &quot;\\define sticky-string() \\&lt;\\&lt;sticky\\s\&quot;.+?\&quot;\\&gt;\\&gt;\n\n\\define escape-actions() &lt;$action-deletetiddler $tiddler=\&quot;$:/temp/sticky-search\&quot; /&gt;\n\n\\define sticky-filter-test() [\n\n\\define sticky-filter() &lt;$list filter=\&quot;[{$:/temp/sticky-search}split[]first[1]!match&lt;sticky-filter-test&gt;]\&quot; emptyMessage={{$:/temp/sticky-search}}&gt;[search:title,text{$:/temp/sticky-search}]&lt;/$list&gt;&lt;$list filter=\&quot;[[$:/temp/sticky-search]!has[text]]\&quot;&gt;[has[text]]&lt;/$list&gt;\n\n\\define sticky-table(macrofilter:\&quot;[has[text]]\&quot;)\n&lt;$list filter=\&quot;[{$:/plugins/stobot/sticky/settings##table-style}!match[none]]\&quot; variable=\&quot;x\&quot;&gt;\n&lt;$vars macro-filter=\&quot;$macrofilter$\&quot;&gt;\n&lt;$list filter=\&quot;[regexp:text&lt;sticky-string&gt;!is[system]!is[current]subfilter&lt;macro-filter&gt;first[1]]\&quot; emptyMessage={{$:/plugins/stobot/sticky/settings##done-message}} variable=\&quot;x\&quot;&gt;  \n  &lt;table class=\&quot;sticky-table\&quot;&gt;\n    &lt;$list filter=\&quot;[{$:/plugins/stobot/sticky/settings##table-searchbar}match[show]]\&quot; variable=\&quot;x\&quot;&gt;\n    &lt;tr&gt;&lt;td colspan=2 style=\&quot;padding-bottom:1em;padding-left:0;padding-right:0;border:none;\&quot;&gt;\n      &lt;$keyboard key=\&quot;escape\&quot; actions=&lt;&lt;escape-actions&gt;&gt;&gt;\n        &lt;$edit-text tiddler=\&quot;$:/temp/sticky-search\&quot; tag=\&quot;input\&quot; default=\&quot;\&quot; placeholder=\&quot;Search or [[filter]] here, esc to clear\&quot; class=\&quot;sticky-input\&quot; /&gt;\n      &lt;/$keyboard&gt;\n    &lt;/td&gt;&lt;/tr&gt;\n    &lt;/$list&gt;\n    &lt;tr&gt;&lt;th style=\&quot;white-space: nowrap;\&quot;&gt;Tiddler&lt;/th&gt;&lt;th&gt;Line&lt;/th&gt;&lt;/tr&gt;\n    &lt;$wikify name=\&quot;sticky-filter-result\&quot; text=&lt;&lt;sticky-filter&gt;&gt;&gt;\n    &lt;$list filter=\&quot;[regexp:text&lt;sticky-string&gt;!is[system]!is[current]subfilter&lt;sticky-filter-result&gt;subfilter&lt;macro-filter&gt;sort[created]]\&quot;&gt;\n      &lt;$list filter=\&quot;[all[current]get[text]splitregexp[\\n]regexp&lt;sticky-string&gt;]\&quot; variable=\&quot;line\&quot;&gt;\n        &lt;tr&gt;\n          &lt;td&gt;''&lt;$link/&gt;''&lt;/td&gt;\n          &lt;td&gt;\n            &lt;$list filter=\&quot;[&lt;line&gt;search-replace::regexp{$:/plugins/stobot/sticky/settings##table-search},[$1]]\&quot; variable=\&quot;line-clean\&quot;&gt;&lt;span title=&lt;&lt;line&gt;&gt;&gt;&lt;&lt;line-clean&gt;&gt;&lt;/span&gt;&lt;/$list&gt;\n          &lt;/td&gt;\n        &lt;/tr&gt;\n      &lt;/$list&gt;\n    &lt;/$list&gt;\n    &lt;/$wikify&gt;\n  &lt;/table&gt;\n&lt;/$list&gt;\n&lt;/$vars&gt;\n&lt;/$list&gt;\n\\end\n\n\\define sticky-list()\n&lt;$list filter=\&quot;[{$:/plugins/stobot/sticky/settings##list-style}!match[none]]\&quot; variable=\&quot;x\&quot;&gt;\n&lt;$list filter=\&quot;[all[current]regexp:text&lt;sticky-string&gt;first[1]]\&quot; variable=\&quot;x\&quot;&gt;\n  &lt;hr&gt;\n  &lt;$list filter=\&quot;[all[current]get[text]splitregexp[\\n]regexp&lt;sticky-string&gt;]\&quot; variable=\&quot;line\&quot;&gt;\n    &lt;div style=\&quot;margin-left: 1em;text-indent: -1em;\&quot; title=&lt;&lt;line&gt;&gt;&gt;\n      &lt;$list filter=\&quot;[&lt;line&gt;search-replace::regexp{$:/plugins/stobot/sticky/settings##list-search},[$1]]\&quot; variable=\&quot;line-clean\&quot;&gt;&lt;&lt;line-clean&gt;&gt;&lt;/$list&gt;\n    &lt;/div&gt;\n  &lt;/$list&gt;\n&lt;/$list&gt;\n&lt;/$list&gt;\n\\end\n\n\\define sticky-sidebar()\n&lt;$list filter=\&quot;[regexp:text&lt;sticky-string&gt;!is[system]!is[current]first[1]]\&quot; emptyMessage={{$:/plugins/stobot/sticky/settings##done-message}} variable=\&quot;x\&quot;&gt;\n  &lt;$list filter=\&quot;[{$:/plugins/stobot/sticky/settings##sidebar-searchbar}match[show]]\&quot; variable=\&quot;x\&quot;&gt;\n    &lt;$keyboard key=\&quot;escape\&quot; actions=&lt;&lt;escape-actions&gt;&gt;&gt;\n      &lt;$edit-text tiddler=\&quot;$:/temp/sticky-search\&quot; tag=\&quot;input\&quot; default=\&quot;\&quot; placeholder=\&quot;Search or [[filter]] here, esc to clear\&quot; class=\&quot;sticky-input\&quot; /&gt;\n    &lt;/$keyboard&gt;\n    &lt;div style=\&quot;height:1em;\&quot;&gt;&lt;/div&gt;\n  &lt;/$list&gt;\n  &lt;$wikify name=\&quot;sticky-filter-result\&quot; text=&lt;&lt;sticky-filter&gt;&gt;&gt;\n  &lt;$list filter=\&quot;[regexp:text&lt;sticky-string&gt;!is[system]!is[current]subfilter&lt;sticky-filter-result&gt;sort[created]]\&quot;&gt;\n    &lt;$link/&gt;&lt;br&gt;\n    &lt;$list filter=\&quot;[all[current]get[text]splitregexp[\\n]regexp&lt;sticky-string&gt;]\&quot; variable=\&quot;line\&quot;&gt;\n      &lt;div style=\&quot;margin-left:2em;text-indent:-1em;\&quot; title=&lt;&lt;line&gt;&gt; &gt;\n        &lt;$list filter=\&quot;[&lt;line&gt;search-replace::regexp{$:/plugins/stobot/sticky/settings##sidebar-search},[$1]]\&quot; variable=\&quot;line-clean\&quot;&gt;&lt;&lt;line-clean&gt;&gt;&lt;/$list&gt;\n      &lt;/div&gt;\n    &lt;/$list&gt;\n    &lt;br&gt;\n  &lt;/$list&gt;\n  &lt;/$wikify&gt;\n&lt;/$list&gt;\n\\end\n\n\\define sticky(txt)\n&lt;$wikify name=\&quot;timestamp\&quot; text={{$:/plugins/stobot/sticky/settings##done-tooltip}}&gt;\n&lt;$button class=\&quot;tc-btn-invisible\&quot; &gt;\n  &lt;span class=\&quot;sticky-active\&quot;&gt;{{$:/plugins/stobot/sticky/settings##char-unchecked}}&amp;nbsp;$txt$\n    &lt;$list filter=\&quot;[&lt;currentTiddler&gt;get[text]splitregexp[\\n]regexp[$txt$]count[]compare:integer:gt[1]]\&quot; variable=\&quot;match-count\&quot;&gt;[&lt;&lt;match-count&gt;&gt;]&lt;/$list&gt;\n  &lt;/span&gt;\n  &lt;$vars out_base=\&quot;\&quot;\&quot;&lt;&lt;sticky-done \&quot;$txt$\&quot; \&quot; \&quot;\&quot;\&quot; out_time=&lt;&lt;timestamp&gt;&gt; out_end=\&quot;\&quot;\&quot; \&quot;&gt;&gt;\&quot;\&quot;\&quot;  &gt;\n    &lt;$vars in=\&quot;\&quot;\&quot;&lt;&lt;sticky \&quot;$txt$\&quot;&gt;&gt;\&quot;\&quot;\&quot; out={{{ [&lt;out_base&gt;addsuffix&lt;out_time&gt;addsuffix&lt;out_end&gt;] }}}&gt;\n      &lt;$action-setfield text={{{ [all[current]get[text]search-replace:g:&lt;in&gt;,&lt;out&gt;] }}}/&gt;\n    &lt;/$vars&gt;\n  &lt;/$vars&gt;\n&lt;/$button&gt;\n&lt;/$wikify&gt;\n\\end\n\n\\define sticky-done-actions()\n&lt;$list filter=\&quot;[&lt;modifier&gt;!match[shift]]\&quot; variable=\&quot;x\&quot;&gt;&lt;$action-setfield text={{{ [all[current]get[text]search-replace:g:&lt;in&gt;,&lt;out&gt;] }}}/&gt;&lt;/$list&gt;\n&lt;$list filter=\&quot;[&lt;modifier&gt;match[shift]]\&quot; variable=\&quot;x\&quot;&gt;&lt;$action-setfield text={{{ [all[current]get[text]search-replace:g:&lt;in&gt;,&lt;del&gt;] }}}/&gt;&lt;/$list&gt;\n\\end\n\n\\define sticky-done(txt, log)\n&lt;$vars in=\&quot;\&quot;\&quot;&lt;&lt;sticky-done \&quot;$txt$\&quot; \&quot;$log$\&quot;&gt;&gt;\&quot;\&quot;\&quot; out=\&quot;\&quot;\&quot;&lt;&lt;sticky \&quot;$txt$\&quot;&gt;&gt;\&quot;\&quot;\&quot; del=\&quot;$txt$\&quot;&gt;\n  &lt;$button class=\&quot;tc-btn-invisible\&quot; tooltip=\&quot;$log$\&quot; actions=&lt;&lt;sticky-done-actions&gt;&gt; &gt;&lt;span class=\&quot;sticky-done\&quot;&gt;{{$:/plugins/stobot/sticky/settings##char-checked}}&amp;nbsp;$txt$&lt;/span&gt;\n  &lt;/$button&gt;\n&lt;/$vars&gt;\n\\end&quot;,
+            &quot;text&quot;: &quot;\\define sticky-string() \\&lt;\\&lt;sticky\\s\&quot;.+?\&quot;\\&gt;\\&gt;\n\n\\define escape-actions() &lt;$action-deletetiddler $tiddler=\&quot;$:/temp/sticky-search\&quot; /&gt;\n\n\\define sticky-filter-test() [\n\n\\define sticky-filter() &lt;$list filter=\&quot;[{$:/temp/sticky-search}split[]first[1]!match&lt;sticky-filter-test&gt;]\&quot; emptyMessage={{$:/temp/sticky-search}}&gt;[search:title,text{$:/temp/sticky-search}]&lt;/$list&gt;&lt;$list filter=\&quot;[[$:/temp/sticky-search]!has[text]]\&quot;&gt;[has[text]]&lt;/$list&gt;\n\n\\define sticky-table(macrofilter:\&quot;[has[text]]\&quot;)\n&lt;$list filter=\&quot;[{$:/plugins/stobot/sticky/settings##table-style}!match[none]]\&quot; variable=\&quot;x\&quot;&gt;\n&lt;$vars macro-filter=\&quot;$macrofilter$\&quot;&gt;\n&lt;$list filter=\&quot;[regexp:text&lt;sticky-string&gt;!is[system]!is[current]subfilter&lt;macro-filter&gt;first[1]]\&quot; emptyMessage={{$:/plugins/stobot/sticky/settings##done-message}} variable=\&quot;x\&quot;&gt;  \n  &lt;table class=\&quot;sticky-table\&quot;&gt;\n    &lt;$list filter=\&quot;[{$:/plugins/stobot/sticky/settings##table-searchbar}match[show]]\&quot; variable=\&quot;x\&quot;&gt;\n    &lt;tr&gt;&lt;td colspan=2 style=\&quot;padding-bottom:1em;padding-left:0;padding-right:0;border:none;\&quot;&gt;\n      &lt;$keyboard key=\&quot;escape\&quot; actions=&lt;&lt;escape-actions&gt;&gt;&gt;\n        &lt;$edit-text tiddler=\&quot;$:/temp/sticky-search\&quot; tag=\&quot;input\&quot; default=\&quot;\&quot; placeholder=\&quot;Search or [[filter]] here, esc to clear\&quot; class=\&quot;sticky-input\&quot; /&gt;\n      &lt;/$keyboard&gt;\n    &lt;/td&gt;&lt;/tr&gt;\n    &lt;/$list&gt;\n    &lt;tr&gt;&lt;th style=\&quot;white-space: nowrap;\&quot;&gt;Tiddler&lt;/th&gt;&lt;th&gt;Line&lt;/th&gt;&lt;/tr&gt;\n    &lt;$wikify name=\&quot;sticky-filter-result\&quot; text=&lt;&lt;sticky-filter&gt;&gt;&gt;\n    &lt;$list filter=\&quot;[regexp:text&lt;sticky-string&gt;!is[system]!is[current]subfilter&lt;sticky-filter-result&gt;subfilter&lt;macro-filter&gt;sort[created]]\&quot;&gt;\n      &lt;$list filter=\&quot;[all[current]get[text]splitregexp[\\n]regexp&lt;sticky-string&gt;]\&quot; variable=\&quot;line\&quot;&gt;\n        &lt;tr&gt;\n          &lt;td&gt;''&lt;$link/&gt;''&lt;/td&gt;\n          &lt;td&gt;\n            &lt;$list filter=\&quot;[&lt;line&gt;search-replace::regexp{$:/plugins/stobot/sticky/settings##table-search},[$1]]\&quot; variable=\&quot;line-clean\&quot;&gt;&lt;span title=&lt;&lt;line&gt;&gt;&gt;&lt;&lt;line-clean&gt;&gt;&lt;/span&gt;&lt;/$list&gt;\n          &lt;/td&gt;\n        &lt;/tr&gt;\n      &lt;/$list&gt;\n    &lt;/$list&gt;\n    &lt;/$wikify&gt;\n  &lt;/table&gt;\n&lt;/$list&gt;\n&lt;/$vars&gt;\n&lt;/$list&gt;\n\\end\n\n\\define sticky-list()\n&lt;$list filter=\&quot;[{$:/plugins/stobot/sticky/settings##list-style}!match[none]]\&quot; variable=\&quot;x\&quot;&gt;\n&lt;$list filter=\&quot;[all[current]regexp:text&lt;sticky-string&gt;first[1]]\&quot; variable=\&quot;x\&quot;&gt;\n  &lt;hr&gt;\n  &lt;$list filter=\&quot;[all[current]get[text]splitregexp[\\n]regexp&lt;sticky-string&gt;]\&quot; variable=\&quot;line\&quot;&gt;\n    &lt;div style=\&quot;margin-left: 1em;text-indent: -1em;\&quot; title=&lt;&lt;line&gt;&gt;&gt;\n      &lt;$list filter=\&quot;[&lt;line&gt;search-replace::regexp{$:/plugins/stobot/sticky/settings##list-search},[$1]]\&quot; variable=\&quot;line-clean\&quot;&gt;&lt;&lt;line-clean&gt;&gt;&lt;/$list&gt;\n    &lt;/div&gt;\n  &lt;/$list&gt;\n&lt;/$list&gt;\n&lt;/$list&gt;\n\\end\n\n\\define sticky-sidebar()\n&lt;$list filter=\&quot;[regexp:text&lt;sticky-string&gt;!is[system]!is[current]first[1]]\&quot; emptyMessage={{$:/plugins/stobot/sticky/settings##done-message}} variable=\&quot;x\&quot;&gt;\n  &lt;$list filter=\&quot;[{$:/plugins/stobot/sticky/settings##sidebar-searchbar}match[show]]\&quot; variable=\&quot;x\&quot;&gt;\n    &lt;$keyboard key=\&quot;escape\&quot; actions=&lt;&lt;escape-actions&gt;&gt;&gt;\n      &lt;$edit-text tiddler=\&quot;$:/temp/sticky-search\&quot; tag=\&quot;input\&quot; default=\&quot;\&quot; placeholder=\&quot;Search or [[filter]] here, esc to clear\&quot; class=\&quot;sticky-input\&quot; /&gt;\n    &lt;/$keyboard&gt;\n    &lt;div style=\&quot;height:1em;\&quot;&gt;&lt;/div&gt;\n  &lt;/$list&gt;\n  &lt;$wikify name=\&quot;sticky-filter-result\&quot; text=&lt;&lt;sticky-filter&gt;&gt;&gt;\n  &lt;$list filter=\&quot;[regexp:text&lt;sticky-string&gt;!is[system]!is[current]subfilter&lt;sticky-filter-result&gt;sort[created]]\&quot;&gt;\n    &lt;$link/&gt;&lt;br&gt;\n    &lt;$list filter=\&quot;[all[current]get[text]splitregexp[\\n]regexp&lt;sticky-string&gt;]\&quot; variable=\&quot;line\&quot;&gt;\n      &lt;div style=\&quot;margin-left:2em;text-indent:-1em;\&quot; title=&lt;&lt;line&gt;&gt; &gt;\n        &lt;$list filter=\&quot;[&lt;line&gt;search-replace::regexp{$:/plugins/stobot/sticky/settings##sidebar-search},[$1]]\&quot; variable=\&quot;line-clean\&quot;&gt;&lt;&lt;line-clean&gt;&gt;&lt;/$list&gt;\n      &lt;/div&gt;\n    &lt;/$list&gt;\n    &lt;br&gt;\n  &lt;/$list&gt;\n  &lt;/$wikify&gt;\n&lt;/$list&gt;\n\\end\n\n\\define sticky(txt)\n&lt;$wikify name=\&quot;timestamp\&quot; text={{$:/plugins/stobot/sticky/settings##done-tooltip}}&gt;\n&lt;$button class=\&quot;tc-btn-invisible\&quot; &gt;\n  &lt;span class=\&quot;sticky-active\&quot;&gt;{{$:/plugins/stobot/sticky/settings##char-unchecked}}&amp;nbsp;$txt$\n    &lt;$list filter=\&quot;[&lt;currentTiddler&gt;get[text]splitregexp[\\n]regexp[$txt$]count[]compare:integer:gt[1]]\&quot; variable=\&quot;match-count\&quot;&gt;[&lt;&lt;match-count&gt;&gt;]&lt;/$list&gt;\n  &lt;/span&gt;\n  &lt;$vars out_base=\&quot;\&quot;\&quot;&lt;&lt;sticky-done \&quot;$txt$\&quot; \&quot; \&quot;\&quot;\&quot; out_time=&lt;&lt;timestamp&gt;&gt; out_end=\&quot;\&quot;\&quot; \&quot;&gt;&gt;\&quot;\&quot;\&quot;  &gt;\n    &lt;$vars in=\&quot;\&quot;\&quot;&lt;&lt;sticky \&quot;$txt$\&quot;&gt;&gt;\&quot;\&quot;\&quot; out={{{ [&lt;out_base&gt;addsuffix&lt;out_time&gt;addsuffix&lt;out_end&gt;] }}}&gt;\n      &lt;$action-setfield text={{{ [all[current]get[text]search-replace:g:&lt;in&gt;,&lt;out&gt;] }}}/&gt;\n    &lt;/$vars&gt;\n  &lt;/$vars&gt;\n&lt;/$button&gt;\n&lt;/$wikify&gt;\n\\end\n\n\\define sticky-done-actions()\n&lt;$list filter=\&quot;[&lt;modifier&gt;!match[shift]]\&quot; variable=\&quot;x\&quot;&gt;&lt;$action-setfield text={{{ [all[current]get[text]search-replace:g:&lt;in&gt;,&lt;out&gt;] }}}/&gt;&lt;/$list&gt;\n&lt;$list filter=\&quot;[&lt;modifier&gt;match[shift]]\&quot; variable=\&quot;x\&quot;&gt;&lt;$action-setfield text={{{ [all[current]get[text]search-replace:g:&lt;in&gt;,&lt;del&gt;] }}}/&gt;&lt;/$list&gt;\n\\end\n\n\\define sticky-done(txt, log)\n&lt;$vars in=\&quot;\&quot;\&quot;&lt;&lt;sticky-done \&quot;$txt$\&quot; \&quot;$log$\&quot;&gt;&gt;\&quot;\&quot;\&quot; out=\&quot;\&quot;\&quot;&lt;&lt;sticky \&quot;$txt$\&quot;&gt;&gt;\&quot;\&quot;\&quot; del=\&quot;\&quot;&gt;\n  &lt;$button class=\&quot;tc-btn-invisible\&quot; tooltip=\&quot;$log$\&quot; actions=&lt;&lt;sticky-done-actions&gt;&gt; &gt;&lt;span class=\&quot;sticky-done\&quot;&gt;{{$:/plugins/stobot/sticky/settings##char-checked}}&amp;nbsp;$txt$&lt;/span&gt;\n  &lt;/$button&gt;\n&lt;/$vars&gt;\n\\end&quot;,
             &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
             &quot;title&quot;: &quot;$:/plugins/stobot/sticky/macros&quot;,
             &quot;tags&quot;: &quot;$:/tags/Macro&quot;,
-            &quot;modified&quot;: &quot;20210910135757410&quot;,
+            &quot;modified&quot;: &quot;20210909220539139&quot;,
+            &quot;created&quot;: &quot;20210904163541416&quot;,
             &quot;caption&quot;: &quot;Macros&quot;
         },
         &quot;$:/plugins/stobot/sticky/readme&quot;: {
@@ -10472,6 +10474,108 @@ Error message and password prompt
     }
 }</pre>
 </div>
+<div caption="Macros" created="20210904163541416" modified="20210910135954136" tags="$:/tags/Macro" title="$:/plugins/stobot/sticky/macros" type="text/vnd.tiddlywiki">
+<pre>\define sticky-string() \&lt;\&lt;sticky\s&quot;.+?&quot;\&gt;\&gt;
+
+\define escape-actions() &lt;$action-deletetiddler $tiddler=&quot;$:/temp/sticky-search&quot; /&gt;
+
+\define sticky-filter-test() [
+
+\define sticky-filter() &lt;$list filter=&quot;[{$:/temp/sticky-search}split[]first[1]!match&lt;sticky-filter-test&gt;]&quot; emptyMessage={{$:/temp/sticky-search}}&gt;[search:title,text{$:/temp/sticky-search}]&lt;/$list&gt;&lt;$list filter=&quot;[[$:/temp/sticky-search]!has[text]]&quot;&gt;[has[text]]&lt;/$list&gt;
+
+\define sticky-table(macrofilter:&quot;[has[text]]&quot;)
+&lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##table-style}!match[none]]&quot; variable=&quot;x&quot;&gt;
+&lt;$vars macro-filter=&quot;$macrofilter$&quot;&gt;
+&lt;$list filter=&quot;[regexp:text&lt;sticky-string&gt;!is[system]!is[current]subfilter&lt;macro-filter&gt;first[1]]&quot; emptyMessage={{$:/plugins/stobot/sticky/settings##done-message}} variable=&quot;x&quot;&gt;  
+  &lt;table class=&quot;sticky-table&quot;&gt;
+    &lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##table-searchbar}match[show]]&quot; variable=&quot;x&quot;&gt;
+    &lt;tr&gt;&lt;td colspan=2 style=&quot;padding-bottom:1em;padding-left:0;padding-right:0;border:none;&quot;&gt;
+      &lt;$keyboard key=&quot;escape&quot; actions=&lt;&lt;escape-actions&gt;&gt;&gt;
+        &lt;$edit-text tiddler=&quot;$:/temp/sticky-search&quot; tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;Search or [[filter]] here, esc to clear&quot; class=&quot;sticky-input&quot; /&gt;
+      &lt;/$keyboard&gt;
+    &lt;/td&gt;&lt;/tr&gt;
+    &lt;/$list&gt;
+    &lt;tr&gt;&lt;th style=&quot;white-space: nowrap;&quot;&gt;Tiddler&lt;/th&gt;&lt;th&gt;Line&lt;/th&gt;&lt;/tr&gt;
+    &lt;$wikify name=&quot;sticky-filter-result&quot; text=&lt;&lt;sticky-filter&gt;&gt;&gt;
+    &lt;$list filter=&quot;[regexp:text&lt;sticky-string&gt;!is[system]!is[current]subfilter&lt;sticky-filter-result&gt;subfilter&lt;macro-filter&gt;sort[created]]&quot;&gt;
+      &lt;$list filter=&quot;[all[current]get[text]splitregexp[\n]regexp&lt;sticky-string&gt;]&quot; variable=&quot;line&quot;&gt;
+        &lt;tr&gt;
+          &lt;td&gt;''&lt;$link/&gt;''&lt;/td&gt;
+          &lt;td&gt;
+            &lt;$list filter=&quot;[&lt;line&gt;search-replace::regexp{$:/plugins/stobot/sticky/settings##table-search},[$1]]&quot; variable=&quot;line-clean&quot;&gt;&lt;span title=&lt;&lt;line&gt;&gt;&gt;&lt;&lt;line-clean&gt;&gt;&lt;/span&gt;&lt;/$list&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/$list&gt;
+    &lt;/$list&gt;
+    &lt;/$wikify&gt;
+  &lt;/table&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;
+&lt;/$list&gt;
+\end
+
+\define sticky-list()
+&lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##list-style}!match[none]]&quot; variable=&quot;x&quot;&gt;
+&lt;$list filter=&quot;[all[current]regexp:text&lt;sticky-string&gt;first[1]]&quot; variable=&quot;x&quot;&gt;
+  &lt;hr&gt;
+  &lt;$list filter=&quot;[all[current]get[text]splitregexp[\n]regexp&lt;sticky-string&gt;]&quot; variable=&quot;line&quot;&gt;
+    &lt;div style=&quot;margin-left: 1em;text-indent: -1em;&quot; title=&lt;&lt;line&gt;&gt;&gt;
+      &lt;$list filter=&quot;[&lt;line&gt;search-replace::regexp{$:/plugins/stobot/sticky/settings##list-search},[$1]]&quot; variable=&quot;line-clean&quot;&gt;&lt;&lt;line-clean&gt;&gt;&lt;/$list&gt;
+    &lt;/div&gt;
+  &lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+\define sticky-sidebar()
+&lt;$list filter=&quot;[regexp:text&lt;sticky-string&gt;!is[system]!is[current]first[1]]&quot; emptyMessage={{$:/plugins/stobot/sticky/settings##done-message}} variable=&quot;x&quot;&gt;
+  &lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##sidebar-searchbar}match[show]]&quot; variable=&quot;x&quot;&gt;
+    &lt;$keyboard key=&quot;escape&quot; actions=&lt;&lt;escape-actions&gt;&gt;&gt;
+      &lt;$edit-text tiddler=&quot;$:/temp/sticky-search&quot; tag=&quot;input&quot; default=&quot;&quot; placeholder=&quot;Search or [[filter]] here, esc to clear&quot; class=&quot;sticky-input&quot; /&gt;
+    &lt;/$keyboard&gt;
+    &lt;div style=&quot;height:1em;&quot;&gt;&lt;/div&gt;
+  &lt;/$list&gt;
+  &lt;$wikify name=&quot;sticky-filter-result&quot; text=&lt;&lt;sticky-filter&gt;&gt;&gt;
+  &lt;$list filter=&quot;[regexp:text&lt;sticky-string&gt;!is[system]!is[current]subfilter&lt;sticky-filter-result&gt;sort[created]]&quot;&gt;
+    &lt;$link/&gt;&lt;br&gt;
+    &lt;$list filter=&quot;[all[current]get[text]splitregexp[\n]regexp&lt;sticky-string&gt;]&quot; variable=&quot;line&quot;&gt;
+      &lt;div style=&quot;margin-left:2em;text-indent:-1em;&quot; title=&lt;&lt;line&gt;&gt; &gt;
+        &lt;$list filter=&quot;[&lt;line&gt;search-replace::regexp{$:/plugins/stobot/sticky/settings##sidebar-search},[$1]]&quot; variable=&quot;line-clean&quot;&gt;&lt;&lt;line-clean&gt;&gt;&lt;/$list&gt;
+      &lt;/div&gt;
+    &lt;/$list&gt;
+    &lt;br&gt;
+  &lt;/$list&gt;
+  &lt;/$wikify&gt;
+&lt;/$list&gt;
+\end
+
+\define sticky(txt)
+&lt;$wikify name=&quot;timestamp&quot; text={{$:/plugins/stobot/sticky/settings##done-tooltip}}&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; &gt;
+  &lt;span class=&quot;sticky-active&quot;&gt;{{$:/plugins/stobot/sticky/settings##char-unchecked}}&amp;nbsp;$txt$
+    &lt;$list filter=&quot;[&lt;currentTiddler&gt;get[text]splitregexp[\n]regexp[$txt$]count[]compare:integer:gt[1]]&quot; variable=&quot;match-count&quot;&gt;[&lt;&lt;match-count&gt;&gt;]&lt;/$list&gt;
+  &lt;/span&gt;
+  &lt;$vars out_base=&quot;&quot;&quot;&lt;&lt;sticky-done &quot;$txt$&quot; &quot; &quot;&quot;&quot; out_time=&lt;&lt;timestamp&gt;&gt; out_end=&quot;&quot;&quot; &quot;&gt;&gt;&quot;&quot;&quot;  &gt;
+    &lt;$vars in=&quot;&quot;&quot;&lt;&lt;sticky &quot;$txt$&quot;&gt;&gt;&quot;&quot;&quot; out={{{ [&lt;out_base&gt;addsuffix&lt;out_time&gt;addsuffix&lt;out_end&gt;] }}}&gt;
+      &lt;$action-setfield text={{{ [all[current]get[text]search-replace:g:&lt;in&gt;,&lt;out&gt;] }}}/&gt;
+    &lt;/$vars&gt;
+  &lt;/$vars&gt;
+&lt;/$button&gt;
+&lt;/$wikify&gt;
+\end
+
+\define sticky-done-actions()
+&lt;$list filter=&quot;[&lt;modifier&gt;!match[shift]]&quot; variable=&quot;x&quot;&gt;&lt;$action-setfield text={{{ [all[current]get[text]search-replace:g:&lt;in&gt;,&lt;out&gt;] }}}/&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;modifier&gt;match[shift]]&quot; variable=&quot;x&quot;&gt;&lt;$action-setfield text={{{ [all[current]get[text]search-replace:g:&lt;in&gt;,&lt;del&gt;] }}}/&gt;&lt;/$list&gt;
+\end
+
+\define sticky-done(txt, log)
+&lt;$vars in=&quot;&quot;&quot;&lt;&lt;sticky-done &quot;$txt$&quot; &quot;$log$&quot;&gt;&gt;&quot;&quot;&quot; out=&quot;&quot;&quot;&lt;&lt;sticky &quot;$txt$&quot;&gt;&gt;&quot;&quot;&quot; del=&quot;$txt$&quot;&gt;
+  &lt;$button class=&quot;tc-btn-invisible&quot; tooltip=&quot;$log$&quot; actions=&lt;&lt;sticky-done-actions&gt;&gt; &gt;&lt;span class=&quot;sticky-done&quot;&gt;{{$:/plugins/stobot/sticky/settings##char-checked}}&amp;nbsp;$txt$&lt;/span&gt;
+  &lt;/$button&gt;
+&lt;/$vars&gt;
+\end</pre>
+</div>
 <div created="20210909161001073" modified="20210909161005547" title="$:/SiteSubtitle">
 <pre>Lightweight Todo System</pre>
 </div>
@@ -10493,7 +10597,7 @@ Error message and password prompt
 <div created="20210909160402508" modified="20210909160402508" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
-<div created="20210909161649202" modified="20210910135830971" title="$:/state/tab/sidebar--595412856">
+<div created="20210909161649202" modified="20210909220416822" title="$:/state/tab/sidebar--595412856">
 <pre>$:/plugins/ahahn/tinka/temp/stobot/sticky - Help Tab</pre>
 </div>
 <div created="20210909161042501" modified="20210909161042501" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -10502,7 +10606,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210910135721358" list="[[Sticky Todo]] [[Meeting about ProjectA 2021-09-09]] $:/plugins/stobot/sticky/macros" modified="20210910135730164" title="$:/StoryList">
+<div created="20210910135904804" list="[[Sticky Todo]] [[Meeting about ProjectA 2021-09-09]] $:/plugins/stobot/sticky/macros" modified="20210910135917763" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10662,21 +10766,21 @@ Error message and password prompt
 *** Christine was really impressive, I should setup a &lt;&lt;sticky &quot;setup a lunch meeting with Christine&quot;&gt;&gt; and start collaborating with her
 </pre>
 </div>
-<div created="20210904201439825" modified="20210910135813840" tags="Meeting Example" title="Meeting about ProjectA 2021-09-09">
+<div created="20210904201439825" modified="20210910135914169" tags="Meeting Example" title="Meeting about ProjectA 2021-09-09">
 <pre>* Phase 1
 ** These are some key points about this
 ** These are some key points about this
-** Potential issue, need to talk to Tony
+** Potential issue, 
 
 * Phase 2
 ** These are some key points about this
-** Another issue here, need to talk to Tony to help with a fix
-** This was really impressive, should send Eric a thank-you for this
+** Another issue here,  to help with a fix
+** This was really impressive, should &lt;&lt;sticky &quot;send Eric a thank-you&quot;&gt;&gt; for this
 
 * Phase 3
 ** These are some key points about this
 ** These are some key points about this
-** There was a piece I didn't understand, should schedule a follow-up with David
+** There was a piece I didn't understand, should &lt;&lt;sticky &quot;schedule a follow-up with David&quot;&gt;&gt;
 </pre>
 </div>
 <div created="20210909131244166" modified="20210909175954320" tags="Meeting Example" title="Meeting about ProjectB 2021-09-09">
