@@ -10478,7 +10478,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20210905215007355" modified="20210910141121536" tags="" title="$:/plugins/stobot/sticky/config">
+<div created="20210905215007355" modified="20210910141347199" tags="" title="$:/plugins/stobot/sticky/config">
 <pre>\define style-actions(type)
 &lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##$type$-style}match[line]]&quot;&gt;
   &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; $index=&quot;$type$-search&quot; $value={{$:/plugins/stobot/sticky/settings##line-search}} /&gt;
@@ -10534,14 +10534,6 @@ Error message and password prompt
 &lt;$radio tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;table-style&quot; value=&quot;trim&quot; actions=&lt;&lt;style-actions &quot;table&quot;&gt;&gt; &gt; Trim&lt;/$radio&gt;: This will show the line trimmed&lt;br&gt;
 &lt;$radio tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;table-style&quot; value=&quot;todo&quot; actions=&lt;&lt;style-actions &quot;table&quot;&gt;&gt; &gt; Todo&lt;/$radio&gt;: This will show just the todo part&lt;br&gt;
 &lt;$checkbox tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;table-searchbar&quot; checked=&quot;show&quot; unchecked=&quot;hide&quot;&gt; Search bar: Show above table summary&lt;/$checkbox&gt;
-
-''All-done Message''&lt;br&gt;
-&lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;done-message&quot; tag=&quot;input&quot; class=&quot;sticky-input&quot;/&gt;
-&lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##done-message}!match&lt;default-done-message&gt;]&quot; variable=&quot;x&quot;&gt;
-  &lt;$button&gt;Restore
-    &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; $index=&quot;done-message&quot; $value=&lt;&lt;default-done-message&gt;&gt; /&gt;
-  &lt;/$button&gt;
-&lt;/$list&gt;
 
 ''Done Tooltip''&lt;br&gt;
 &lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;done-tooltip&quot; tag=&quot;input&quot; class=&quot;sticky-input&quot;/&gt;
@@ -10617,7 +10609,15 @@ Currently it's &lt;$edit-text tiddler=&quot;$:/config/shortcuts/sticky&quot; tag
  [[click here to re-map|$:/core/ui/ControlPanel/KeyboardShortcuts]] (look for sticky)
 
 ''Delete Key''&lt;br&gt;
-Instead of marking a todo as complete or incomplete, you can clear the `&lt;&lt;sticky&gt;&gt;` piece by holding &lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;delete-key&quot; tag=&quot;input&quot; class=&quot;sticky-input-short&quot; size=&quot;8&quot;/&gt; while you click it in view mode. </pre>
+Instead of marking a todo as complete or incomplete, you can clear the `&lt;&lt;sticky&gt;&gt;` piece by holding &lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;delete-key&quot; tag=&quot;input&quot; class=&quot;sticky-input-short&quot; size=&quot;8&quot;/&gt; while you click it in view mode. 
+
+''All-done Message''&lt;br&gt;
+&lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;done-message&quot; tag=&quot;input&quot; class=&quot;sticky-input&quot;/&gt;
+&lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##done-message}!match&lt;default-done-message&gt;]&quot; variable=&quot;x&quot;&gt;
+  &lt;$button&gt;Restore
+    &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; $index=&quot;done-message&quot; $value=&lt;&lt;default-done-message&gt;&gt; /&gt;
+  &lt;/$button&gt;
+&lt;/$list&gt;</pre>
 </div>
 <div caption="Macros" created="20210904163541416" modified="20210910141217397" tags="$:/tags/Macro" title="$:/plugins/stobot/sticky/macros" type="text/vnd.tiddlywiki">
 <pre>\define sticky-string() \&lt;\&lt;sticky\s&quot;.+?&quot;\&gt;\&gt;
@@ -10931,9 +10931,9 @@ delete-key: shift</pre>
 *** Christine was really impressive, I should setup a &lt;&lt;sticky &quot;setup a lunch meeting with Christine&quot;&gt;&gt; and start collaborating with her
 </pre>
 </div>
-<div created="20210904201439825" modified="20210910141241597" tags="Meeting Example" title="Meeting about ProjectA 2021-09-09">
+<div created="20210904201439825" modified="20210910141246917" tags="Meeting Example" title="Meeting about ProjectA 2021-09-09">
 <pre>* Phase 1
-** These are some key points about this &lt;&lt;sticky &quot;test&quot;&gt;&gt;
+** These are some key points about this 
 ** These are some key points about this
 ** Potential issue, &lt;&lt;sticky &quot;need to talk to Tony&quot;&gt;&gt;
 
