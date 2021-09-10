@@ -10478,7 +10478,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20210905215007355" modified="20210910143342149" tags="" title="$:/plugins/stobot/sticky/config">
+<div created="20210905215007355" modified="20210910143423190" tags="" title="$:/plugins/stobot/sticky/config">
 <pre>\define style-actions(type)
 &lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##$type$-style}match[line]]&quot;&gt;
   &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; $index=&quot;$type$-search&quot; $value={{$:/plugins/stobot/sticky/settings##line-search}} /&gt;
@@ -10613,12 +10613,13 @@ Currently it's this key that applies the macro in edit-mode&lt;br&gt;
 
 ''Clear Sticky Modifier Key''&lt;br&gt;
 Instead of marking a todo as complete or incomplete, you can clear the `&lt;&lt;sticky&gt;&gt;` piece by holding a modifier key(s) while you click it in view mode. &lt;br&gt;
-&lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;delete-key&quot; tag=&quot;input&quot; class=&quot;sticky-input-short&quot; size=&quot;8&quot;/&gt; For more info, visit [ext[TiddlyWiki Docs|https://tiddlywiki.com/#modifier%20Variable]]
+&lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;delete-key&quot; tag=&quot;input&quot; class=&quot;sticky-input-short&quot; size=&quot;8&quot;/&gt; 
 &lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##delete-key}!match&lt;default-modifier&gt;]&quot; variable=&quot;x&quot;&gt;
   &lt;$button&gt;Restore
     &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; $index=&quot;delete-key&quot; $value=&lt;&lt;default-modifier&gt;&gt; /&gt;
   &lt;/$button&gt;
 &lt;/$list&gt;
+For more info, visit [ext[TiddlyWiki Docs|https://tiddlywiki.com/#modifier%20Variable]]
 
 ''All-done Message''&lt;br&gt;
 &lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;done-message&quot; tag=&quot;input&quot; class=&quot;sticky-input&quot;/&gt;
@@ -10734,7 +10735,7 @@ Instead of marking a todo as complete or incomplete, you can clear the `&lt;&lt;
 &lt;/$vars&gt;
 \end</pre>
 </div>
-<div created="20210906134908678" modified="20210910140700630" tags="" title="$:/plugins/stobot/sticky/settings" type="application/x-tiddler-dictionary">
+<div created="20210906134908678" modified="20210910143357876" tags="" title="$:/plugins/stobot/sticky/settings" type="application/x-tiddler-dictionary">
 <pre>list-style: trim
 list-search: ^\W*?(\w|\&lt;.*)
 table-style: trim
