@@ -177,6 +177,8 @@ Error message and password prompt
 
 <li>$:/plugins/stobot/sticky</li>
 
+<li>$:/plugins/stobot/sticky/config</li>
+
 <li>$:/plugins/stobot/sticky/settings</li>
 
 <li>$:/SiteSubtitle</li>
@@ -10474,6 +10476,149 @@ Error message and password prompt
     }
 }</pre>
 </div>
+<div created="20210905215007355" modified="20210910140933123" tags="" title="$:/plugins/stobot/sticky/config">
+<pre>\define style-actions(type)
+&lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##$type$-style}match[line]]&quot;&gt;
+  &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; $index=&quot;$type$-search&quot; $value={{$:/plugins/stobot/sticky/settings##line-search}} /&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##$type$-style}match[trim]]&quot;&gt;
+  &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; $index=&quot;$type$-search&quot; $value={{$:/plugins/stobot/sticky/settings##trim-search}} /&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##$type$-style}match[todo]]&quot;&gt;
+  &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; $index=&quot;$type$-search&quot; $value={{$:/plugins/stobot/sticky/settings##todo-search}} /&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[[$type$]match[sidebar]]&quot; variable=&quot;x&quot;&gt;
+  &lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##sidebar-style}match[none]]&quot; variable=&quot;x&quot;&gt;
+    &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/sidebar&quot; tags=&quot;&quot; /&gt;
+  &lt;/$list&gt;
+  &lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##sidebar-style}!match[none]]&quot; variable=&quot;x&quot;&gt;
+    &lt;$list filter=&quot;[[$:/plugins/stobot/sticky/sidebar]!tag[$:/tags/SideBar]]&quot; variable=&quot;x&quot;&gt;
+      &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/sidebar&quot; tags=&quot;$:/tags/SideBar&quot; /&gt;
+    &lt;/$list&gt;
+  &lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+\define default-done-message() Congratulations, no stickies left!
+
+\define default-done-tooltip() Completed: &lt;&lt;now &quot;YYYY-0MM-0DD hh12:0mm pm&quot;&gt;&gt;
+
+\define default-char-unchecked() &amp;#x2610;
+
+\define default-char-checked() &amp;#x2612;
+
+\define default-active-css() color: red; font-weight: 500;
+
+\define default-done-css() font-weight: 500;
+
+\define default-shortcut() ctrl-shift-Add
+
+''Tiddler Bottom Summary''&lt;br&gt;
+&lt;$radio tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;list-style&quot; value=&quot;none&quot; actions=&lt;&lt;style-actions &quot;list&quot;&gt;&gt; &gt; None&lt;/$radio&gt;: This turns the in-tiddler list off&lt;br&gt;
+&lt;$radio tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;list-style&quot; value=&quot;line&quot; actions=&lt;&lt;style-actions &quot;list&quot;&gt;&gt; &gt; Line&lt;/$radio&gt;: This will show the whole line&lt;br&gt;
+&lt;$radio tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;list-style&quot; value=&quot;trim&quot; actions=&lt;&lt;style-actions &quot;list&quot;&gt;&gt; &gt; Trim&lt;/$radio&gt;: This will show the line trimmed&lt;br&gt;
+&lt;$radio tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;list-style&quot; value=&quot;todo&quot; actions=&lt;&lt;style-actions &quot;list&quot;&gt;&gt; &gt; Todo&lt;/$radio&gt;: This will show just the todo part&lt;br&gt;
+
+''Sidebar Summary''&lt;br&gt;
+&lt;$radio tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;sidebar-style&quot; value=&quot;none&quot; actions=&lt;&lt;style-actions &quot;sidebar&quot;&gt;&gt; &gt; None&lt;/$radio&gt;: This turns the sidebar off&lt;br&gt;
+&lt;$radio tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;sidebar-style&quot; value=&quot;line&quot; actions=&lt;&lt;style-actions &quot;sidebar&quot;&gt;&gt; &gt; Line&lt;/$radio&gt;: This will show the whole line&lt;br&gt;
+&lt;$radio tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;sidebar-style&quot; value=&quot;trim&quot; actions=&lt;&lt;style-actions &quot;sidebar&quot;&gt;&gt; &gt; Trim&lt;/$radio&gt;: This will show the line trimmed&lt;br&gt;
+&lt;$radio tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;sidebar-style&quot; value=&quot;todo&quot; actions=&lt;&lt;style-actions &quot;sidebar&quot;&gt;&gt; &gt; Todo&lt;/$radio&gt;: This will show just the todo part&lt;br&gt;
+&lt;$checkbox tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;sidebar-searchbar&quot; checked=&quot;show&quot; unchecked=&quot;hide&quot;&gt; Search bar: Show above sidebar summary&lt;/$checkbox&gt;
+
+''Table Summary''&lt;br&gt;
+&lt;$radio tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;table-style&quot; value=&quot;none&quot; actions=&lt;&lt;style-actions &quot;table&quot;&gt;&gt; &gt; None&lt;/$radio&gt;: This turns table summaries off&lt;br&gt;
+&lt;$radio tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;table-style&quot; value=&quot;line&quot; actions=&lt;&lt;style-actions &quot;table&quot;&gt;&gt; &gt; Line&lt;/$radio&gt;: This will show the whole line&lt;br&gt;
+&lt;$radio tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;table-style&quot; value=&quot;trim&quot; actions=&lt;&lt;style-actions &quot;table&quot;&gt;&gt; &gt; Trim&lt;/$radio&gt;: This will show the line trimmed&lt;br&gt;
+&lt;$radio tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;table-style&quot; value=&quot;todo&quot; actions=&lt;&lt;style-actions &quot;table&quot;&gt;&gt; &gt; Todo&lt;/$radio&gt;: This will show just the todo part&lt;br&gt;
+&lt;$checkbox tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;table-searchbar&quot; checked=&quot;show&quot; unchecked=&quot;hide&quot;&gt; Search bar: Show above table summary&lt;/$checkbox&gt;
+
+''All-done Message''&lt;br&gt;
+&lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;done-message&quot; tag=&quot;input&quot; class=&quot;sticky-input&quot;/&gt;
+&lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##done-message}!match&lt;default-done-message&gt;]&quot; variable=&quot;x&quot;&gt;
+  &lt;$button&gt;Restore
+    &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; $index=&quot;done-message&quot; $value=&lt;&lt;default-done-message&gt;&gt; /&gt;
+  &lt;/$button&gt;
+&lt;/$list&gt;
+
+''Done Tooltip''&lt;br&gt;
+&lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;done-tooltip&quot; tag=&quot;input&quot; class=&quot;sticky-input&quot;/&gt;
+&lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##done-tooltip}!match&lt;default-done-tooltip&gt;]&quot; variable=&quot;x&quot;&gt;
+  &lt;$button&gt;Restore
+    &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; $index=&quot;done-tooltip&quot; $value=&lt;&lt;default-done-tooltip&gt;&gt; /&gt;
+  &lt;/$button&gt;
+&lt;/$list&gt;
+
+''Checkbox Character(s)''&lt;br&gt;
+&lt;table class=&quot;sticky-table-invisible&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;Active&lt;/td&gt;
+&lt;td&gt;&lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;char-unchecked&quot; tag=&quot;input&quot; class=&quot;sticky-input-short&quot; size=&quot;6&quot;/&gt;&lt;/td&gt;
+&lt;td&gt;{{$:/plugins/stobot/sticky/settings##char-unchecked}}&lt;/td&gt;
+&lt;td&gt;
+&lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##char-unchecked}!match&lt;default-char-unchecked&gt;]&quot; variable=&quot;x&quot;&gt;
+  &lt;$button&gt;Restore
+    &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; $index=&quot;char-unchecked&quot; $value=&lt;&lt;default-char-unchecked&gt;&gt; /&gt;
+  &lt;/$button&gt;
+&lt;/$list&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Done&lt;/td&gt;
+&lt;td&gt;&lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;char-checked&quot; tag=&quot;input&quot; class=&quot;sticky-input-short&quot; size=&quot;6&quot;/&gt;&lt;/td&gt;
+&lt;td&gt;{{$:/plugins/stobot/sticky/settings##char-checked}}&lt;/td&gt;
+&lt;td&gt;
+&lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##char-checked}!match&lt;default-char-checked&gt;]&quot; variable=&quot;x&quot;&gt;
+  &lt;$button&gt;Restore
+    &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; $index=&quot;char-checked&quot; $value=&lt;&lt;default-char-checked&gt;&gt; /&gt;
+  &lt;/$button&gt;
+&lt;/$list&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+''Sticky Formatting'' ([ext[help|https://www.w3schools.com/css/css_text.asp]])&lt;br&gt;
+&lt;table class=&quot;sticky-table-invisible&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;Active&lt;/td&gt;
+&lt;td&gt;&lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;active-css&quot; tag=&quot;input&quot; class=&quot;sticky-input-short&quot; size=&quot;30&quot;/&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span style={{$:/plugins/stobot/sticky/settings##active-css}}&gt;Sample active todo&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##active-css}!match&lt;default-active-css&gt;]&quot; variable=&quot;x&quot;&gt;
+  &lt;$button&gt;Restore
+    &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; $index=&quot;active-css&quot; $value=&lt;&lt;default-active-css&gt;&gt; /&gt;
+  &lt;/$button&gt;
+&lt;/$list&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Done&lt;/td&gt;
+&lt;td&gt;&lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;done-css&quot; tag=&quot;input&quot; class=&quot;sticky-input-short&quot; size=&quot;30&quot;/&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span style={{$:/plugins/stobot/sticky/settings##done-css}}&gt;Sample done todo&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##done-css}!match&lt;default-done-css&gt;]&quot; variable=&quot;x&quot;&gt;
+  &lt;$button&gt;Restore
+    &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; $index=&quot;done-css&quot; $value=&lt;&lt;default-done-css&gt;&gt; /&gt;
+  &lt;/$button&gt;
+&lt;/$list&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+''Shortcut Key''&lt;br&gt;
+Currently it's &lt;$edit-text tiddler=&quot;$:/config/shortcuts/sticky&quot; tag=&quot;input&quot; class=&quot;sticky-input-short&quot; size=&quot;10&quot;/&gt;
+&lt;$list filter=&quot;[{$:/config/shortcuts/sticky}!match&lt;default-shortcut&gt;]&quot; variable=&quot;x&quot;&gt;
+&lt;$button&gt;Restore
+  &lt;$action-setfield $tiddler=&quot;$:/config/shortcuts/sticky&quot; $value=&lt;&lt;default-shortcut&gt;&gt; /&gt;
+&lt;/$button&gt;
+&lt;/$list&gt;
+ [[click here to re-map|$:/core/ui/ControlPanel/KeyboardShortcuts]] (look for sticky)
+
+''Delete Key''
+Instead of marking a todo as complete or incomplete, you can clear the &lt;&lt;sticky&gt;&gt; piece by holding
+&lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;delete-key&quot; tag=&quot;input&quot; /&gt;
+while you click it in view mode. </pre>
+</div>
 <div created="20210906134908678" modified="20210910140700630" tags="" title="$:/plugins/stobot/sticky/settings" type="application/x-tiddler-dictionary">
 <pre>list-style: trim
 list-search: ^\W*?(\w|\&lt;.*)
@@ -10524,7 +10669,7 @@ delete-key: shift</pre>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210910140637780" list="[[Sticky Todo]] $:/plugins/stobot/sticky/macros $:/plugins/stobot/sticky/settings" modified="20210910140643681" title="$:/StoryList">
+<div created="20210910140637780" list="[[Sticky Todo]] $:/plugins/stobot/sticky/macros $:/plugins/stobot/sticky/settings $:/plugins/stobot/sticky/config" modified="20210910140714424" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
