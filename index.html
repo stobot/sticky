@@ -10478,7 +10478,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20210905215007355" modified="20210910142645251" tags="" title="$:/plugins/stobot/sticky/config">
+<div created="20210905215007355" modified="20210910142751354" tags="" title="$:/plugins/stobot/sticky/config">
 <pre>\define style-actions(type)
 &lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##$type$-style}match[line]]&quot;&gt;
   &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; $index=&quot;$type$-search&quot; $value={{$:/plugins/stobot/sticky/settings##line-search}} /&gt;
@@ -10599,7 +10599,7 @@ Error message and password prompt
 &lt;/tr&gt;
 &lt;/table&gt;
 
-''Shortcut Key''&lt;br&gt;
+''Apply Sticky Shortcut Key''&lt;br&gt;
 Currently it's this key that applies the macro in edit-mode&lt;br&gt;
 &lt;$edit-text tiddler=&quot;$:/config/shortcuts/sticky&quot; tag=&quot;input&quot; class=&quot;sticky-input-short&quot; size=&quot;10&quot;/&gt;
 &lt;$list filter=&quot;[{$:/config/shortcuts/sticky}!match&lt;default-shortcut&gt;]&quot; variable=&quot;x&quot;&gt;
@@ -10609,7 +10609,7 @@ Currently it's this key that applies the macro in edit-mode&lt;br&gt;
 &lt;/$list&gt;
  [[click here to re-map|$:/core/ui/ControlPanel/KeyboardShortcuts]] (look for sticky)
 
-''Clear Modifier Key''&lt;br&gt;
+''Clear Sticky Modifier Key''&lt;br&gt;
 Instead of marking a todo as complete or incomplete, you can clear the `&lt;&lt;sticky&gt;&gt;` piece by holding a modifier key(s) while you click it in view mode. &lt;br&gt;
 &lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;delete-key&quot; tag=&quot;input&quot; class=&quot;sticky-input-short&quot; size=&quot;8&quot;/&gt; For more info, visit [ext[TiddlyWiki Docs|https://tiddlywiki.com/#modifier%20Variable]]
 
