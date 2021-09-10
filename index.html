@@ -10621,7 +10621,7 @@ Instead of marking a todo as complete or incomplete, you can clear the `&lt;&lt;
   &lt;/$button&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div caption="Macros" created="20210904163541416" modified="20210910141635174" tags="$:/tags/Macro" title="$:/plugins/stobot/sticky/macros" type="text/vnd.tiddlywiki">
+<div caption="Macros" created="20210904163541416" modified="20210910141746718" tags="$:/tags/Macro" title="$:/plugins/stobot/sticky/macros" type="text/vnd.tiddlywiki">
 <pre>\define sticky-string() \&lt;\&lt;sticky\s&quot;.+?&quot;\&gt;\&gt;
 
 \define escape-actions() &lt;$action-deletetiddler $tiddler=&quot;$:/temp/sticky-search&quot; /&gt;
@@ -10704,7 +10704,7 @@ Instead of marking a todo as complete or incomplete, you can clear the `&lt;&lt;
 &lt;$wikify name=&quot;timestamp&quot; text={{$:/plugins/stobot/sticky/settings##done-tooltip}}&gt;
   &lt;$vars out_base=&quot;&quot;&quot;&lt;&lt;sticky-done &quot;$txt$&quot; &quot; &quot;&quot;&quot; out_time=&lt;&lt;timestamp&gt;&gt; out_end=&quot;&quot;&quot; &quot;&gt;&gt;&quot;&quot;&quot;  &gt;
     &lt;$vars in=&quot;&quot;&quot;&lt;&lt;sticky &quot;$txt$&quot;&gt;&gt;&quot;&quot;&quot; out={{{ [&lt;out_base&gt;addsuffix&lt;out_time&gt;addsuffix&lt;out_end&gt;] }}}&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; &gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; actions=&lt;&lt;sticky-active-actions&gt;&gt; &gt;
   &lt;span class=&quot;sticky-active&quot;&gt;{{$:/plugins/stobot/sticky/settings##char-unchecked}}&amp;nbsp;$txt$
     &lt;$list filter=&quot;[&lt;currentTiddler&gt;get[text]splitregexp[\n]regexp[$txt$]count[]compare:integer:gt[1]]&quot; variable=&quot;match-count&quot;&gt;[&lt;&lt;match-count&gt;&gt;]&lt;/$list&gt;
   &lt;/span&gt;
