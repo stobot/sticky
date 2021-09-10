@@ -10476,7 +10476,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20210905215007355" modified="20210910140933123" tags="" title="$:/plugins/stobot/sticky/config">
+<div created="20210905215007355" modified="20210910141016955" tags="" title="$:/plugins/stobot/sticky/config">
 <pre>\define style-actions(type)
 &lt;$list filter=&quot;[{$:/plugins/stobot/sticky/settings##$type$-style}match[line]]&quot;&gt;
   &lt;$action-setfield $tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; $index=&quot;$type$-search&quot; $value={{$:/plugins/stobot/sticky/settings##line-search}} /&gt;
@@ -10615,9 +10615,7 @@ Currently it's &lt;$edit-text tiddler=&quot;$:/config/shortcuts/sticky&quot; tag
  [[click here to re-map|$:/core/ui/ControlPanel/KeyboardShortcuts]] (look for sticky)
 
 ''Delete Key''
-Instead of marking a todo as complete or incomplete, you can clear the &lt;&lt;sticky&gt;&gt; piece by holding
-&lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;delete-key&quot; tag=&quot;input&quot; /&gt;
-while you click it in view mode. </pre>
+Instead of marking a todo as complete or incomplete, you can clear the `&lt;&lt;sticky&gt;&gt;` piece by holding &lt;$edit-text tiddler=&quot;$:/plugins/stobot/sticky/settings&quot; index=&quot;delete-key&quot; tag=&quot;input&quot; /&gt; while you click it in view mode. </pre>
 </div>
 <div created="20210906134908678" modified="20210910140700630" tags="" title="$:/plugins/stobot/sticky/settings" type="application/x-tiddler-dictionary">
 <pre>list-style: trim
