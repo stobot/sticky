@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>Sticky Todo — Lightweight Todo System</title>
+<title>Stickies — lightweight todo system</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -173,6 +173,8 @@ Error message and password prompt
 
 <li>$:/isEncrypted</li>
 
+<li>$:/language/DefaultNewTiddlerTitle</li>
+
 <li>$:/plugins/ahahn/tinka</li>
 
 <li>$:/plugins/stobot/sticky</li>
@@ -182,6 +184,8 @@ Error message and password prompt
 <li>$:/SiteTitle</li>
 
 <li>$:/state/plugin-info--896887961-$:/plugins/stobot/sticky</li>
+
+<li>$:/state/plugin-info-735793834-$:/plugins/stobot/sticky--632805056</li>
 
 <li>$:/state/showeditpreview</li>
 
@@ -204,6 +208,10 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
+
+<li>$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize</li>
+
+<li>$:/themes/tiddlywiki/vanilla/metrics/bodylineheight</li>
 
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
 
@@ -231,7 +239,9 @@ Error message and password prompt
 
 <li>Quick Start--534431671</li>
 
-<li>Sticky Todo</li>
+<li>Quick Start-1518828153</li>
+
+<li>Stickies</li>
 
 <li>Sticky Todo Table Example</li>
 
@@ -10139,8 +10149,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20210909161138461" modified="20210909161537002" title="$:/DefaultTiddlers">
-<pre>[[Sticky Todo]]</pre>
+<div created="20210909161138461" modified="20211030150417509" title="$:/DefaultTiddlers">
+<pre>[[Stickies]]</pre>
 </div>
 <div created="20210909160629061" modified="20210909160629322" title="$:/GitHub/Branch">
 <pre>main</pre>
@@ -10159,6 +10169,9 @@ Error message and password prompt
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
+</div>
+<div created="20211030150420429" modified="20211030150421453" title="$:/language/DefaultNewTiddlerTitle">
+<pre>New</pre>
 </div>
 <div author="Andreas Hahn" bag="default" core-version="&gt;=5.1.20" dependents="" description="An easy plugin packer" list="readme usage license" name="Tinka" plugin-type="plugin" revision="0" source="https://tinkaplugin.github.io" title="$:/plugins/ahahn/tinka" type="application/json" version="0.5.0">
 <pre>{
@@ -10482,14 +10495,17 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20210909161001073" modified="20210909161005547" title="$:/SiteSubtitle">
-<pre>Lightweight Todo System</pre>
+<div created="20210909161001073" modified="20211030150403600" title="$:/SiteSubtitle">
+<pre>lightweight todo system</pre>
 </div>
-<div created="20210909160943846" modified="20210909161531786" title="$:/SiteTitle">
-<pre>Sticky Todo</pre>
+<div created="20210909160943846" modified="20211030150359001" title="$:/SiteTitle">
+<pre>Stickies</pre>
 </div>
-<div created="20210910185444962" modified="20210910185444962" title="$:/state/plugin-info--896887961-$:/plugins/stobot/sticky">
-<pre>yes</pre>
+<div created="20210910185444962" modified="20211030150026613" title="$:/state/plugin-info--896887961-$:/plugins/stobot/sticky">
+<pre>no</pre>
+</div>
+<div created="20211030133446612" modified="20211030133446612" title="$:/state/plugin-info-735793834-$:/plugins/stobot/sticky--632805056">
+<pre>contents</pre>
 </div>
 <div created="20210909160906170" modified="20210909160906999" title="$:/state/showeditpreview">
 <pre>no</pre>
@@ -10500,14 +10516,14 @@ Error message and password prompt
 <div created="20210909161025345" modified="20210909161135005" title="$:/state/tab--2112689675">
 <pre>$:/core/ui/ControlPanel/Basics</pre>
 </div>
-<div created="20210909160400918" modified="20210910185442041" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Plugins</pre>
+<div created="20210909160400918" modified="20211030150437692" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
 <div created="20210909160402508" modified="20210910184446057" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
-<div created="20210909161649202" modified="20210910184753478" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20210909161649202" modified="20211030133437207" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Open</pre>
 </div>
 <div created="20210909161042501" modified="20210909161042501" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/PageControls</pre>
@@ -10515,7 +10531,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210910192739809" list="[[Sticky Todo]]" modified="20210910192843123" title="$:/StoryList">
+<div created="20211030133442655" list="Stickies" modified="20211030150350572" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10626,6 +10642,12 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20211030150047581" modified="20211030150047581" title="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize">
+<pre>14px</pre>
+</div>
+<div created="20211030150050992" modified="20211030150050992" title="$:/themes/tiddlywiki/vanilla/metrics/bodylineheight">
+<pre>20px</pre>
 </div>
 <div created="20210909161054720" modified="20210909161054720" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
@@ -10768,13 +10790,14 @@ Note that when it's been marked as completed, the hover-tooltip will show you th
 * Here is a video walkthrough of what the plugin is, does, and how it can be tweaked to suit your needs.[ext[YouTube|https://youtu.be/ICdpcnGvR6w]]
 * (Optional) example tiddlers can be imported via drag-n-drop of &lt;&lt;tag &quot;Example&quot;&gt;&gt;</pre>
 </div>
-<div created="20210910192834423" modified="20210910192834423" title="Quick Start--534431671">
+<div created="20210910192834423" modified="20211030150132049" title="Quick Start--534431671">
+<pre>How do I use it?</pre>
+</div>
+<div created="20211030150511596" modified="20211030150511596" title="Quick Start-1518828153">
 <pre>Quick Start</pre>
 </div>
-<div created="20210905212951984" modified="20210910180324590" title="Sticky Todo">
-<pre>!! Welcome to Sticky Todo
-
-&lt;&lt;tabs tabsList:&quot;[tag[Instructions]]&quot; default=&quot;Quick Start&quot;&gt;&gt;</pre>
+<div created="20210905212951984" modified="20211030150508980" title="Stickies">
+<pre>&lt;&lt;tabs tabsList:&quot;[tag[Instructions]]&quot; default=&quot;Quick Start&quot;&gt;&gt;</pre>
 </div>
 <div created="20210907231819010" modified="20210909134531397" tags="" title="Sticky Todo Table Example">
 <pre>&lt;&lt;sticky-table&gt;&gt;</pre>
